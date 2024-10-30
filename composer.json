@@ -1,5 +1,5 @@
 {
-  "name": "gigerIT/laravel-morphmap-js-generator",
+  "name": "gigerit/laravel-morphmap-js-generator",
   "description": "Generate frontend JavaScript/TypeScript constants from Laravel morph map configuration",
   "keywords": [
     "laravel",
