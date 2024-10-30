@@ -8,7 +8,7 @@ Keep your frontend morph types in sync with your Laravel models automatically.
 You can install the package via composer:
 
 ```bash
-composer require gigerIT/laravel-morphmap-js-generator
+composer require gigerit/laravel-morphmap-js-generator --dev
 ```
 
 The package will automatically register itself with Laravel.
