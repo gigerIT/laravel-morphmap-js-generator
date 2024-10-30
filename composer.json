@@ -1,0 +1,30 @@
+{
+  "name": "gigerIT/laravel-morphmap-js-generator",
+  "description": "Generate frontend JavaScript/TypeScript constants from Laravel morph map configuration",
+  "keywords": [
+    "laravel",
+    "morphmap",
+    "javascript",
+    "typescript",
+    "frontend",
+    "constants"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "gigerIT\\LaravelMorphMapJsGenerator\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "gigerIT\\LaravelMorphMapJsGenerator\\MorphMapJsGeneratorServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "laravel/framework": "^8.0|^9.0|^10.0|^11.0"
+  }
+}
