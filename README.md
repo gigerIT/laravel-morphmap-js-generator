@@ -1,6 +1,7 @@
 # Laravel Morph Map JS Generator
 
-Generate frontend JavaScript/TypeScript constants from your Laravel application's morph map configuration. Keep your frontend morph types in sync with your Laravel models automatically.
+Generate frontend JavaScript/TypeScript constants from your Laravel application's morph map configuration. 
+Keep your frontend morph types in sync with your Laravel models automatically.
 
 ## Installation
 
