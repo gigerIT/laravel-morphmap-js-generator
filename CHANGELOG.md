@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/gigerIT/laravel-morphmap-js-generator/compare/v1.0.1...v1.1.0) (2025-03-20)
+
+
+### Features
+
+* Laravel 12 support ([3559612](https://github.com/gigerIT/laravel-morphmap-js-generator/commit/3559612c1bb9c6eea2012059dfe46e34e0998090))
+
+
+### Bug Fixes
+
+* readme package name ([639224c](https://github.com/gigerIT/laravel-morphmap-js-generator/commit/639224c73befd88982e16072b9f2241e1eb285fd))
+
 ## [1.0.1](https://github.com/gigerIT/laravel-morphmap-js-generator/compare/v1.0.0...v1.0.1) (2024-10-30)
 
 
