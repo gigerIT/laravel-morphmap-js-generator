@@ -78,8 +78,8 @@ export type MorphMapValue = typeof MORPH_MAP[keyof typeof MORPH_MAP];
 ```
 
 The helper accepts morph values such as `'user'` or `1`. Constant names such as
-`'USER'` are not valid arguments. Untyped callers passing an unknown value retain
-the `'Unknown'` runtime fallback.
+`'USER'` are only valid arguments if they are also morph values. Untyped callers
+passing an unknown value retain the `'Unknown'` runtime fallback.
 
 ### Using in Your Frontend
 
@@ -138,7 +138,8 @@ Install PHP dependencies with `composer install` and the test compiler with
 `npm ci`, then run `npm test`. The tests boot the package service provider,
 execute `morphmap:generate-js --ts`, compile the generated files under strict
 TypeScript settings, and execute the compiled consumers to verify lookups and
-the runtime fallback. CI runs this against Laravel 12 and 13.
+the runtime fallback. See the [test workflow](.github/workflows/tests.yml) for
+the tested PHP and Laravel versions.
 
 ## Security
 
