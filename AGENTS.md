@@ -7,8 +7,7 @@ frontend code.
 
 ## Repository Structure
 
-- `.github/workflows/` contains the Release Please workflow for pushes to
-  `main`.
+- `.github/workflows/` contains release automation and generated TypeScript tests.
 - `src/` contains the package source under the
   `gigerIT\LaravelMorphMapJsGenerator` PSR-4 namespace.
 - `src/Console/` contains the `morphmap:generate-js` Artisan command.
@@ -53,10 +52,9 @@ Recommended consuming-app build hook from the README:
 }
 ```
 
-> TODO: No local dependency-install command is declared in `composer.json`.
-> TODO: No test command is declared in `composer.json`.
+For local dependency installation and generated-output tests, see the
+Development section of `README.md` and the scripts in `package.json`.
 > TODO: No lint command or formatter command is declared in this repository.
-> TODO: No type-check command is declared in this repository.
 > TODO: No debug command is documented.
 > TODO: No local deploy command is documented; releases run through GitHub
 > Actions on pushes to `main`.
@@ -102,18 +100,17 @@ constant names come from the model basename.
 
 ## Testing Strategy
 
-> TODO: No test directory, test dependency, PHPUnit or Pest config, or CI test
-> workflow is present.
-
-Future tests should cover the command behavior around empty morph maps,
-numeric keys, string keys, `--path`, `--ts`, generated filenames, directory
-creation, and generated template contents.
+`npm test` runs `tests/run.mjs`: the service provider registers the real Artisan
+command, then emitted TypeScript is compiled strictly and executed. Keep tests
+on this public path rather than inspecting PHP template source. See
+`.github/workflows/tests.yml` for the tested PHP/Laravel combinations. Broader
+consumer compatibility remains declared in `composer.json`.
 
 ## Security & Compliance
 
 - The package is licensed as MIT in `composer.json`.
-- Runtime dependencies are limited to PHP `^8.0` and Laravel Framework
-  `^8.0|^9.0|^10.0|^11.0|^12.0`.
+- Runtime dependency constraints and Laravel discovery are authoritative in
+  `composer.json`. This library does not commit a Composer lock file.
 - `.gitignore` excludes `/vendor` and `/.idea`.
 - The GitHub release workflow uses `${{ secrets.GITHUB_TOKEN }}`.
 - Security reports are directed to `security@example.com` in the README.
@@ -163,3 +160,10 @@ creation, and generated template contents.
 - [.github/workflows/release-please.yml](.github/workflows/release-please.yml)
 
 > TODO: No `docs/`, ADRs, or nested `AGENTS.md` files are present.
+
+## Maintaining this file
+
+Keep this file for knowledge useful to almost every future agent session in this project.
+Do not repeat what the codebase already shows; point to the authoritative file or command instead.
+Prefer rewriting or pruning existing entries over appending new ones.
+When updating this file, preserve this bar for all agents and keep entries concise.

@@ -51,10 +51,10 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-The command will generate a JavaScript/TypeScript file with these constants:
+With `--ts`, the command generates these TypeScript constants:
 
 ```typescript
-// morphMap.ts or morphMap.js
+// morphMap.ts
 
 export const MORPH_MAP = {
   TENANT: 'tenant',
@@ -70,17 +70,21 @@ export const MORPH_MAP_MODELS = {
   [MORPH_MAP.CONTACT]: 'Contact'
 } as const;
 
-export const getMorphMapModel = (morphMap: keyof typeof MORPH_MAP): string => {
+export const getMorphMapModel = (morphMap: MorphMapValue): string => {
   return MORPH_MAP_MODELS[morphMap] || 'Unknown';
 };
 
 export type MorphMapValue = typeof MORPH_MAP[keyof typeof MORPH_MAP];
 ```
 
+The helper accepts morph values such as `'user'` or `1`. Constant names such as
+`'USER'` are not valid arguments. Untyped callers passing an unknown value retain
+the `'Unknown'` runtime fallback.
+
 ### Using in Your Frontend
 
 ```typescript
-import { MORPH_MAP, getMorphMapModel } from './morphMap';
+import { MORPH_MAP, getMorphMapModel, type MorphMapValue } from './morphMap';
 
 // Use constants
 if (type === MORPH_MAP.TENANT) {
@@ -127,6 +131,14 @@ function handleMorphable(type: MorphMapValue) {
 ```
 
 3. **Type Safety**: Use TypeScript for better type checking and IDE support.
+
+## Development
+
+Install PHP dependencies with `composer install` and the test compiler with
+`npm ci`, then run `npm test`. The tests boot the package service provider,
+execute `morphmap:generate-js --ts`, compile the generated files under strict
+TypeScript settings, and execute the compiled consumers to verify lookups and
+the runtime fallback. CI runs this against Laravel 12 and 13.
 
 ## Security
 
