@@ -87,7 +87,7 @@ export const MORPH_MAP_MODELS = {
 /**
  * Helper function to get model name from morph map value
  */
-export const getMorphMapModel = (morphMap: keyof typeof MORPH_MAP): string => {
+export const getMorphMapModel = (morphMap: MorphMapValue): string => {
   return MORPH_MAP_MODELS[morphMap] || 'Unknown';
 };
 
