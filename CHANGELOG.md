@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/gigerIT/laravel-morphmap-js-generator/compare/v1.2.0...v1.2.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* accept morph values in generated TypeScript helper ([07c914d](https://github.com/gigerIT/laravel-morphmap-js-generator/commit/07c914d6513810e338c2128fc9baa8c12c409fd2))
+
 ## [1.2.0](https://github.com/gigerIT/laravel-morphmap-js-generator/compare/v1.1.0...v1.2.0) (2026-05-06)
 
 
