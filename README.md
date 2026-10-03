@@ -77,6 +77,10 @@ export const getMorphMapModel = (morphMap: MorphMapValue): string => {
 export type MorphMapValue = typeof MORPH_MAP[keyof typeof MORPH_MAP];
 ```
 
+Without `--ts`, the command writes `morphMap.js` with the same runtime exports
+(`MORPH_MAP`, `MORPH_MAP_MODELS`, and `getMorphMapModel`) as executable JavaScript,
+without TypeScript annotations or the `MorphMapValue` type export.
+
 The helper accepts morph values such as `'user'` or `1`. Constant names such as
 `'USER'` are only valid arguments if they are also morph values. Untyped callers
 passing an unknown value retain the `'Unknown'` runtime fallback.
@@ -136,10 +140,11 @@ function handleMorphable(type: MorphMapValue) {
 
 Install PHP dependencies with `composer install` and the test compiler with
 `npm ci`, then run `npm test`. The tests boot the package service provider,
-execute `morphmap:generate-js --ts`, compile the generated files under strict
-TypeScript settings, and execute the compiled consumers to verify lookups and
-the runtime fallback. See the [test workflow](.github/workflows/tests.yml) for
-the tested PHP and Laravel versions.
+execute `morphmap:generate-js` with and without `--ts`, parse and execute the
+generated JavaScript without Node type stripping, and compile and execute the
+generated TypeScript under strict settings. Both paths verify lookups and the
+runtime fallback. See the [test workflow](.github/workflows/tests.yml) for the
+tested PHP and Laravel versions.
 
 ## Security
 

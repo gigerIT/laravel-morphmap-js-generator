@@ -25,6 +25,12 @@ try {
     run('node', [join(directory, 'compiled/consumer.js')]);
     console.log(`PASS: ${name} generated TypeScript compiles and executes`);
   }
+
+  const javascriptDirectory = join(temporary, 'values-js');
+  copyFileSync(join(root, 'tests/fixtures/values.mjs'), join(javascriptDirectory, 'consumer.mjs'));
+  run('node', ['--no-experimental-strip-types', '--check', join(javascriptDirectory, 'morphMap.js')]);
+  run('node', ['--no-experimental-strip-types', join(javascriptDirectory, 'consumer.mjs')]);
+  console.log('PASS: generated JavaScript parses and executes without type stripping');
 } finally {
   rmSync(temporary, { recursive: true, force: true });
 }

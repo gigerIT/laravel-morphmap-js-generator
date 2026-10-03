@@ -64,6 +64,12 @@ class GenerateMorphMapJsCommand extends Command
         }
 
         $typeAnnotation = $isTypeScript ? ' as const' : '';
+        $parameterType = $isTypeScript ? ': MorphMapValue' : '';
+        $returnType = $isTypeScript ? ': string' : '';
+        $typeDeclaration = $isTypeScript ? "\n\n/**
+ * Type for all possible morph map values
+ */
+export type MorphMapValue = typeof MORPH_MAP[keyof typeof MORPH_MAP];" : '';
 
         return <<<EOT
 // This file is auto-generated. Do not edit it manually.
@@ -87,14 +93,9 @@ export const MORPH_MAP_MODELS = {
 /**
  * Helper function to get model name from morph map value
  */
-export const getMorphMapModel = (morphMap: MorphMapValue): string => {
+export const getMorphMapModel = (morphMap{$parameterType}){$returnType} => {
   return MORPH_MAP_MODELS[morphMap] || 'Unknown';
-};
-
-/**
- * Type for all possible morph map values
- */
-export type MorphMapValue = typeof MORPH_MAP[keyof typeof MORPH_MAP];
+};{$typeDeclaration}
 
 EOT;
     }
