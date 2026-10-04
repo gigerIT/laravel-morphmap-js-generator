@@ -27,8 +27,22 @@ foreach ($cases as $name => $map) {
     }
 }
 
+Relation::morphMap($cases['values'], false);
+$exit = $artisan->call('morphmap:generate-js', ['--path' => 'values-js']);
+if ($exit !== 0 || !is_file($argv[1] . '/values-js/morphMap.js')) {
+    throw new RuntimeException('JavaScript generation failed: ' . $artisan->output());
+}
+
 Relation::morphMap([], false);
-if ($artisan->call('morphmap:generate-js', ['--ts' => true, '--path' => 'empty']) !== 1
-    || file_exists($argv[1] . '/empty')) {
-    throw new RuntimeException('An empty morph map must fail without writing output.');
+foreach ([false, true] as $isTypeScript) {
+    $path = $isTypeScript ? 'empty-ts' : 'empty-js';
+    $options = ['--path' => $path];
+    if ($isTypeScript) {
+        $options['--ts'] = true;
+    }
+
+    if ($artisan->call('morphmap:generate-js', $options) !== 1
+        || file_exists($argv[1] . '/' . $path)) {
+        throw new RuntimeException('An empty morph map must fail without writing output.');
+    }
 }
