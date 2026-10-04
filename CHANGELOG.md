@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/gigerIT/laravel-morphmap-js-generator/compare/v1.2.1...v1.2.2) (2026-10-04)
+
+
+### Bug Fixes
+
+* emit plain JavaScript from default morph-map command ([c1678d5](https://github.com/gigerIT/laravel-morphmap-js-generator/commit/c1678d5a3005b7389bbbd19dd6129980215e4e89))
+
 ## [1.2.1](https://github.com/gigerIT/laravel-morphmap-js-generator/compare/v1.2.0...v1.2.1) (2026-09-29)
 
 
