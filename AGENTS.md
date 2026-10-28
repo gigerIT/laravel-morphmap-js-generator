@@ -112,7 +112,7 @@ consumer compatibility remains declared in `composer.json`.
 - Runtime dependency constraints and Laravel discovery are authoritative in
   `composer.json`. This library does not commit a Composer lock file.
 - `.gitignore` excludes `/vendor` and `/.idea`.
-- The GitHub release workflow uses `${{ secrets.GITHUB_TOKEN }}`.
+- Release Please uses the repository secret `RELEASE_PLEASE_TOKEN` so release PRs trigger checks automatically.
 - Security reports are directed to `security@example.com` in the README.
 
 > TODO: The README links to `LICENSE.md`, but no `LICENSE.md` file is present.
